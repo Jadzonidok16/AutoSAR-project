@@ -1,0 +1,55 @@
+2024-04-04 - 18:09:14
+Workflow 'Update workflow.' started.
+              Using DaVinci Configurator 5.11.16 SP1 (x86_64).
+ 18:09:14 - Action 'SLP conformance check' started.
+ 18:09:14 - Action 'SLP conformance check' started.
+ 18:09:14 - Action 'SLP conformance check' successfully finished.
+ 18:09:14 - Action 'SLP conformance check' successfully finished.
+ 18:09:14 - Action 'Creating back up' started.
+ 18:09:14 - Action 'Creating back up' started.
+              Create backup folder: 'C:\nit-au-03\AUTOSAR_Exercises\AFS\Backups\backup_dvpa_2024-04-04_18-09-14'.
+              Copied project file from: 'C:\nit-au-03\AUTOSAR_Exercises\AFS\MyECU.dpa' to 'C:\nit-au-03\AUTOSAR_Exercises\AFS\Backups\backup_dvpa_2024-04-04_18-09-14\MyECU.dpa'.
+              Copied ECUC folder from: 'C:\nit-au-03\AUTOSAR_Exercises\AFS\Config\ECUC' to 'C:\nit-au-03\AUTOSAR_Exercises\AFS\Backups\backup_dvpa_2024-04-04_18-09-14\Config\ECUC'.
+              Copied 'System' folder from: 'C:\nit-au-03\AUTOSAR_Exercises\AFS\Config\System' to 'C:\nit-au-03\AUTOSAR_Exercises\AFS\Backups\backup_dvpa_2024-04-04_18-09-14\Config\System'.
+              Copied DaVinci Developer Workspace folder from: 'C:\nit-au-03\AUTOSAR_Exercises\AFS\.\Config\Developer' to 'C:\nit-au-03\AUTOSAR_Exercises\AFS\Backups\backup_dvpa_2024-04-04_18-09-14\Config\Developer'.
+              Copied BSW internal behavior folder from: 'C:\nit-au-03\AUTOSAR_Exercises\AFS\Config\InternalBehavior' to 'C:\nit-au-03\AUTOSAR_Exercises\AFS\Backups\backup_dvpa_2024-04-04_18-09-14\Config\InternalBehavior'.
+              Copied SWC files folder from: 'C:\nit-au-03\AUTOSAR_Exercises\AFS\Config\ServiceComponents' to 'C:\nit-au-03\AUTOSAR_Exercises\AFS\Backups\backup_dvpa_2024-04-04_18-09-14\Config\ServiceComponents'.
+              Copied Application Components files folder from: 'C:\nit-au-03\AUTOSAR_Exercises\AFS\Config\ApplicationComponents' to 'C:\nit-au-03\AUTOSAR_Exercises\AFS\Backups\backup_dvpa_2024-04-04_18-09-14\Config\ApplicationComponents'.
+              Copied Definition Restriction files folder from: 'C:\nit-au-03\AUTOSAR_Exercises\AFS\DefRestrict' to 'C:\nit-au-03\AUTOSAR_Exercises\AFS\Backups\backup_dvpa_2024-04-04_18-09-14\DefRestrict'.
+ 18:09:14 - Action 'Creating back up' successfully finished.
+ 18:09:14 - Action 'Creating back up' successfully finished.
+ 18:09:14 - Action 'Processing the input files' started.
+ 18:09:14 - Action 'Processing the input files' started.
+ 18:09:14 - Action 'Processing' started.
+              Start converting legacy file(s): C:\work\AUTOSAR\CanCollege\Autosar4\ProjectBase-II\Config\_InputDataBases\CAN.dbc.
+ 18:09:14 - Action 'Converting legacy file(s) to AUTOSAR files' started.
+ 18:09:14 - Action 'Converting legacy file(s) to AUTOSAR files' started.
+              Convert legacy file(s) to System Description.
+              Used executable: "C:\nit-au-03\AUTOSAR_Exercises\Generators\LegacyDb2SystemDescrConverter\LegacyDb2SystemDescrConverter.exe".
+              Arguments: ["C:\work\AUTOSAR\CanCollege\Autosar4\ProjectBase-II\Config\_InputDataBases\CAN.dbc", -o, "C:\Users\nituser\AppData\Local\Temp\634534360972700\ConvertedLegacy.arxml", -r, 42, -e].
+              
+              Vector Legacy Database Converter Version 1.7.30.0.
+              Copyright c Vector Informatik GmbH 2016.
+              License is invalid! Element <SLP> cannot be found.
+              
+              [info] Command line: "C:\nit-au-03\AUTOSAR_Exercises\Generators\LegacyDb2SystemDescrConverter\LegacyDb2SystemDescrConverter.exe" "C:\work\AUTOSAR\CanCollege\Autosar4\ProjectBase-II\Config\_InputDataBases\CAN.dbc" -o "C:\Users\nituser\AppData\Local\Temp\634534360972700\ConvertedLegacy.arxml" -r 42 -e.
+              [info] Options file: -v 15.
+              [error] File C:\work\AUTOSAR\CanCollege\Autosar4\ProjectBase-II\Config\_InputDataBases\CAN.dbc not found.
+              [fatal error] No valid input file found.
+              
+              Elapsed time: 0,094 seconds.
+              1 Errors.
+              0 Warnings.
+ 18:09:14 - Action 'Converting legacy file(s) to AUTOSAR files' aborted due to errors.
+                 [Error] An external tool did not run correctly.
+                 See output view for more details.
+ 18:09:14 - Action 'Converting legacy file(s) to AUTOSAR files' aborted due to errors.
+                 [Error] An external tool did not run correctly.
+                 See output view for more details.
+              [Error]   Could not find the ECU Extract for the ECU instance 'MyECU' in the Legacy Converter output.
+ 18:09:14 - Action 'Processing' aborted due to errors.
+                 [FatalError] Could not find the ECU Extract for the ECU instance 'MyECU' in the Legacy Converter output.
+ 18:09:14 - Action 'Processing the input files' aborted due to errors.
+                 [FatalError] The Activity 'Processing' was not successful. Could not find the ECU Extract for the ECU instance 'MyECU' in the Legacy Converter output.
+ 18:09:14 - Action 'Open Project' started.
+ 18:09:14 - Action 'Open Project' successfully finished.

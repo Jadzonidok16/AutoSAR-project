@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file was saved with a tool from Vector Informatik GmbH
+-->
+<AUTOSAR xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-2-1.xsd" xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>ComponentTypes</SHORT-NAME>
+      <ELEMENTS>
+        <SENSOR-ACTUATOR-SW-COMPONENT-TYPE UUID="8B2E0115-B707-40C4-BA19-8D998327DC67">
+          <SHORT-NAME>CtApBatteryManager</SHORT-NAME>
+          <PORTS>
+            <P-PORT-PROTOTYPE UUID="ACD189AA-3228-4604-B6C5-A7E039868E97">
+              <SHORT-NAME>PpBatteryMode</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <MODE-SWITCH-SENDER-COM-SPEC>
+                  <ENHANCED-MODE-API>false</ENHANCED-MODE-API>
+                  <MODE-GROUP-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/PortInterfaces/PiBatteryMode/BatteryMode</MODE-GROUP-REF>
+                  <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                </MODE-SWITCH-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="MODE-SWITCH-INTERFACE">/PortInterfaces/PiBatteryMode</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="C0FF3D9C-0001-4051-B4ED-A3FF46075B8B">
+              <SHORT-NAME>Event_DTC_0x000002</SHORT-NAME>
+              <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="1AA4C8D0-CFBB-4F1F-B9D2-EED52C08B7A0">
+              <SHORT-NAME>PiBatteryLevelHwAb</SHORT-NAME>
+              <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/PortInterfaces/PiBatteryLevelHwAb</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+          </PORTS>
+          <INTERNAL-BEHAVIORS>
+            <SWC-INTERNAL-BEHAVIOR UUID="6CCB408B-2BBF-410C-B9B2-2AAE18BA7505">
+              <SHORT-NAME>CtApBatteryManager_InternalBehavior</SHORT-NAME>
+              <EVENTS>
+                <TIMING-EVENT UUID="A6BBFB21-3E6B-412E-8E54-662ADB957912">
+                  <SHORT-NAME>TMT_RCtApBatteryManager</SHORT-NAME>
+                  <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/ComponentTypes/CtApBatteryManager/CtApBatteryManager_InternalBehavior/RCtApBatteryManager</START-ON-EVENT-REF>
+                  <PERIOD>0.1</PERIOD>
+                </TIMING-EVENT>
+              </EVENTS>
+              <RUNNABLES>
+                <RUNNABLE-ENTITY UUID="6A4A93DC-F31C-41A5-B85F-E433525773C9">
+                  <SHORT-NAME>RCtApBatteryManager</SHORT-NAME>
+                  <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                  <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                  <MODE-SWITCH-POINTS>
+                    <MODE-SWITCH-POINT>
+                      <SHORT-NAME>SWITCH_PpBatteryMode_BatteryMode</SHORT-NAME>
+                      <MODE-GROUP-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/ComponentTypes/CtApBatteryManager/PpBatteryMode</CONTEXT-P-PORT-REF>
+                        <TARGET-MODE-GROUP-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/PortInterfaces/PiBatteryMode/BatteryMode</TARGET-MODE-GROUP-REF>
+                      </MODE-GROUP-IREF>
+                    </MODE-SWITCH-POINT>
+                  </MODE-SWITCH-POINTS>
+                  <SERVER-CALL-POINTS>
+                    <SYNCHRONOUS-SERVER-CALL-POINT>
+                      <SHORT-NAME>SC_Event_DTC_0x000002_SetEventStatus</SHORT-NAME>
+                      <OPERATION-IREF>
+                        <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/ComponentTypes/CtApBatteryManager/Event_DTC_0x000002</CONTEXT-R-PORT-REF>
+                        <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/MICROSAR/Dem_swc/Interfaces/DiagnosticMonitor/SetEventStatus</TARGET-REQUIRED-OPERATION-REF>
+                      </OPERATION-IREF>
+                      <TIMEOUT>0</TIMEOUT>
+                    </SYNCHRONOUS-SERVER-CALL-POINT>
+                    <SYNCHRONOUS-SERVER-CALL-POINT>
+                      <SHORT-NAME>SC_PiBatteryLevelHwAb_ReadChannel</SHORT-NAME>
+                      <OPERATION-IREF>
+                        <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/ComponentTypes/CtApBatteryManager/PiBatteryLevelHwAb</CONTEXT-R-PORT-REF>
+                        <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/PortInterfaces/PiBatteryLevelHwAb/ReadChannel</TARGET-REQUIRED-OPERATION-REF>
+                      </OPERATION-IREF>
+                      <TIMEOUT>0</TIMEOUT>
+                    </SYNCHRONOUS-SERVER-CALL-POINT>
+                  </SERVER-CALL-POINTS>
+                  <SYMBOL>RCtApBatteryManager</SYMBOL>
+                </RUNNABLE-ENTITY>
+              </RUNNABLES>
+              <SUPPORTS-MULTIPLE-INSTANTIATION>false</SUPPORTS-MULTIPLE-INSTANTIATION>
+            </SWC-INTERNAL-BEHAVIOR>
+          </INTERNAL-BEHAVIORS>
+        </SENSOR-ACTUATOR-SW-COMPONENT-TYPE>
+        <SWC-IMPLEMENTATION UUID="FB11C8E5-F705-4145-A603-B5D9C85AFBE1">
+          <SHORT-NAME>CtApBatteryManager_Implementation</SHORT-NAME>
+          <CODE-DESCRIPTORS>
+            <CODE>
+              <SHORT-NAME>Default</SHORT-NAME>
+              <ARTIFACT-DESCRIPTORS>
+                <AUTOSAR-ENGINEERING-OBJECT>
+                  <SHORT-LABEL>Default</SHORT-LABEL>
+                  <CATEGORY>SWSRC</CATEGORY>
+                </AUTOSAR-ENGINEERING-OBJECT>
+              </ARTIFACT-DESCRIPTORS>
+            </CODE>
+          </CODE-DESCRIPTORS>
+          <BEHAVIOR-REF DEST="SWC-INTERNAL-BEHAVIOR">/ComponentTypes/CtApBatteryManager/CtApBatteryManager_InternalBehavior</BEHAVIOR-REF>
+        </SWC-IMPLEMENTATION>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

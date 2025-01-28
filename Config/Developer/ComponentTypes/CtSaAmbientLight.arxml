@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file was saved with a tool from Vector Informatik GmbH
+-->
+<AUTOSAR xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-2-1.xsd" xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>ComponentTypes</SHORT-NAME>
+      <ELEMENTS>
+        <SENSOR-ACTUATOR-SW-COMPONENT-TYPE UUID="C5A5FD17-CBBF-4206-8B81-852B447EDE5A">
+          <SHORT-NAME>CtSaAmbientLight</SHORT-NAME>
+          <PORTS>
+            <P-PORT-PROTOTYPE UUID="A4449B0A-0EF3-4FEA-B934-758147558EAE">
+              <SHORT-NAME>PpAmbientLightOut</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PiAmbientLight/DeAmbientLight</DATA-ELEMENT-REF>
+                  <USES-END-TO-END-PROTECTION>false</USES-END-TO-END-PROTECTION>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/Constants/CDarkLight</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/PiAmbientLight</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="94FD2D1E-818A-408B-8A73-5FAA419F6FAC">
+              <SHORT-NAME>PpAmbientLightIn</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PiAmbientLight/DeAmbientLight</DATA-ELEMENT-REF>
+                  <USES-END-TO-END-PROTECTION>false</USES-END-TO-END-PROTECTION>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <FILTER>
+                    <DATA-FILTER-TYPE>ALWAYS</DATA-FILTER-TYPE>
+                  </FILTER>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/Constants/CDarkLight</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/PiAmbientLight</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="7D645D74-D49E-47FF-9680-45F0A4E2AAE6">
+              <SHORT-NAME>PpBatteryMode</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <MODE-SWITCH-RECEIVER-COM-SPEC>
+                  <ENHANCED-MODE-API>false</ENHANCED-MODE-API>
+                  <SUPPORTS-ASYNCHRONOUS-MODE-SWITCH>false</SUPPORTS-ASYNCHRONOUS-MODE-SWITCH>
+                </MODE-SWITCH-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="MODE-SWITCH-INTERFACE">/PortInterfaces/PiBatteryMode</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+          </PORTS>
+          <INTERNAL-BEHAVIORS>
+            <SWC-INTERNAL-BEHAVIOR UUID="5AA1FE30-D668-48A1-AB48-8949FBC2D03A">
+              <SHORT-NAME>CtSaAmbientLight_InternalBehavior</SHORT-NAME>
+              <EVENTS>
+                <TIMING-EVENT UUID="5305C4D8-7960-4836-9E37-2E11ACB814AA">
+                  <SHORT-NAME>TMT_RCtSaAmbientLight</SHORT-NAME>
+                  <DISABLED-MODE-IREFS>
+                    <DISABLED-MODE-IREF>
+                      <CONTEXT-PORT-REF DEST="R-PORT-PROTOTYPE">/ComponentTypes/CtSaAmbientLight/PpBatteryMode</CONTEXT-PORT-REF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/PortInterfaces/PiBatteryMode/BatteryMode</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/ModeDclrGroups/BatteryMode/BATTERY_LOW</TARGET-MODE-DECLARATION-REF>
+                    </DISABLED-MODE-IREF>
+                  </DISABLED-MODE-IREFS>
+                  <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/ComponentTypes/CtSaAmbientLight/CtSaAmbientLight_InternalBehavior/RCtSaAmbientLight</START-ON-EVENT-REF>
+                  <PERIOD>0.1</PERIOD>
+                </TIMING-EVENT>
+              </EVENTS>
+              <RUNNABLES>
+                <RUNNABLE-ENTITY UUID="7D976054-2DAC-4B15-B6F6-B7E964885059">
+                  <SHORT-NAME>RCtSaAmbientLight</SHORT-NAME>
+                  <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                  <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                  <DATA-RECEIVE-POINT-BY-ARGUMENTS>
+                    <VARIABLE-ACCESS>
+                      <SHORT-NAME>REC_PpAmbientLightIn_DeAmbientLight</SHORT-NAME>
+                      <ACCESSED-VARIABLE>
+                        <AUTOSAR-VARIABLE-IREF>
+                          <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/ComponentTypes/CtSaAmbientLight/PpAmbientLightIn</PORT-PROTOTYPE-REF>
+                          <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PiAmbientLight/DeAmbientLight</TARGET-DATA-PROTOTYPE-REF>
+                        </AUTOSAR-VARIABLE-IREF>
+                      </ACCESSED-VARIABLE>
+                    </VARIABLE-ACCESS>
+                  </DATA-RECEIVE-POINT-BY-ARGUMENTS>
+                  <DATA-SEND-POINTS>
+                    <VARIABLE-ACCESS>
+                      <SHORT-NAME>SEND_PpAmbientLightOut_DeAmbientLight</SHORT-NAME>
+                      <ACCESSED-VARIABLE>
+                        <AUTOSAR-VARIABLE-IREF>
+                          <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/ComponentTypes/CtSaAmbientLight/PpAmbientLightOut</PORT-PROTOTYPE-REF>
+                          <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PiAmbientLight/DeAmbientLight</TARGET-DATA-PROTOTYPE-REF>
+                        </AUTOSAR-VARIABLE-IREF>
+                      </ACCESSED-VARIABLE>
+                    </VARIABLE-ACCESS>
+                  </DATA-SEND-POINTS>
+                  <MODE-ACCESS-POINTS>
+                    <MODE-ACCESS-POINT>
+                      <MODE-GROUP-IREF>
+                        <R-MODE-GROUP-IN-ATOMIC-SWC-INSTANCE-REF>
+                          <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/ComponentTypes/CtSaAmbientLight/PpBatteryMode</CONTEXT-R-PORT-REF>
+                          <TARGET-MODE-GROUP-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/PortInterfaces/PiBatteryMode/BatteryMode</TARGET-MODE-GROUP-REF>
+                        </R-MODE-GROUP-IN-ATOMIC-SWC-INSTANCE-REF>
+                      </MODE-GROUP-IREF>
+                    </MODE-ACCESS-POINT>
+                  </MODE-ACCESS-POINTS>
+                  <SYMBOL>RCtSaAmbientLight</SYMBOL>
+                </RUNNABLE-ENTITY>
+              </RUNNABLES>
+              <SUPPORTS-MULTIPLE-INSTANTIATION>false</SUPPORTS-MULTIPLE-INSTANTIATION>
+            </SWC-INTERNAL-BEHAVIOR>
+          </INTERNAL-BEHAVIORS>
+        </SENSOR-ACTUATOR-SW-COMPONENT-TYPE>
+        <SWC-IMPLEMENTATION UUID="645DD626-C4B1-4485-BE06-52FE703E6702">
+          <SHORT-NAME>CtSaAmbientLight_Implementation</SHORT-NAME>
+          <CODE-DESCRIPTORS>
+            <CODE>
+              <SHORT-NAME>Default</SHORT-NAME>
+              <ARTIFACT-DESCRIPTORS>
+                <AUTOSAR-ENGINEERING-OBJECT>
+                  <SHORT-LABEL>Default</SHORT-LABEL>
+                  <CATEGORY>SWSRC</CATEGORY>
+                </AUTOSAR-ENGINEERING-OBJECT>
+              </ARTIFACT-DESCRIPTORS>
+            </CODE>
+          </CODE-DESCRIPTORS>
+          <BEHAVIOR-REF DEST="SWC-INTERNAL-BEHAVIOR">/ComponentTypes/CtSaAmbientLight/CtSaAmbientLight_InternalBehavior</BEHAVIOR-REF>
+        </SWC-IMPLEMENTATION>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

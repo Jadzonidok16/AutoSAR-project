@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file was saved with a tool from Vector Informatik GmbH
+-->
+<AUTOSAR xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-2-1.xsd" xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>ComponentTypes</SHORT-NAME>
+      <ELEMENTS>
+        <SENSOR-ACTUATOR-SW-COMPONENT-TYPE UUID="BCB3F725-6782-441C-BACD-02D20F12F239">
+          <SHORT-NAME>CtSaSpeedometer</SHORT-NAME>
+          <PORTS>
+            <P-PORT-PROTOTYPE UUID="6A2C3D81-2824-4B16-8A2A-68C7688D0A19">
+              <SHORT-NAME>PpSpeedometerOut</SHORT-NAME>
+              <PROVIDED-COM-SPECS>
+                <NONQUEUED-SENDER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PiSpeedometer/DeSpeedometer</DATA-ELEMENT-REF>
+                  <USES-END-TO-END-PROTECTION>false</USES-END-TO-END-PROTECTION>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/Constants/CInitSpeed</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-SENDER-COM-SPEC>
+              </PROVIDED-COM-SPECS>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/PiSpeedometer</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="96DADA8D-0F51-4D55-85A4-7FD0F9EF9B30">
+              <SHORT-NAME>PpBatteryMode</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <MODE-SWITCH-RECEIVER-COM-SPEC>
+                  <ENHANCED-MODE-API>false</ENHANCED-MODE-API>
+                  <SUPPORTS-ASYNCHRONOUS-MODE-SWITCH>false</SUPPORTS-ASYNCHRONOUS-MODE-SWITCH>
+                </MODE-SWITCH-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="MODE-SWITCH-INTERFACE">/PortInterfaces/PiBatteryMode</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE UUID="05871F33-1D07-4BF0-BBAC-C0F6A049BBEB">
+              <SHORT-NAME>PpSpeedometerIn</SHORT-NAME>
+              <REQUIRED-COM-SPECS>
+                <NONQUEUED-RECEIVER-COM-SPEC>
+                  <DATA-ELEMENT-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PiSpeedometer/DeSpeedometer</DATA-ELEMENT-REF>
+                  <USES-END-TO-END-PROTECTION>false</USES-END-TO-END-PROTECTION>
+                  <ALIVE-TIMEOUT>0</ALIVE-TIMEOUT>
+                  <ENABLE-UPDATE>false</ENABLE-UPDATE>
+                  <FILTER>
+                    <DATA-FILTER-TYPE>ALWAYS</DATA-FILTER-TYPE>
+                  </FILTER>
+                  <HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>
+                  <INIT-VALUE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/Constants/CInitSpeed</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                  </INIT-VALUE>
+                </NONQUEUED-RECEIVER-COM-SPEC>
+              </REQUIRED-COM-SPECS>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/PortInterfaces/PiSpeedometer</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+          </PORTS>
+          <INTERNAL-BEHAVIORS>
+            <SWC-INTERNAL-BEHAVIOR UUID="EC83F449-2EE7-41D4-B91D-F35215D35EC8">
+              <SHORT-NAME>CtSaSpeedometer_InternalBehavior</SHORT-NAME>
+              <EVENTS>
+                <TIMING-EVENT UUID="755C4A20-8F94-4171-91BD-0CE77897259F">
+                  <SHORT-NAME>TMT_RCtSaSpeedometer</SHORT-NAME>
+                  <DISABLED-MODE-IREFS>
+                    <DISABLED-MODE-IREF>
+                      <CONTEXT-PORT-REF DEST="R-PORT-PROTOTYPE">/ComponentTypes/CtSaSpeedometer/PpBatteryMode</CONTEXT-PORT-REF>
+                      <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/PortInterfaces/PiBatteryMode/BatteryMode</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                      <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/ModeDclrGroups/BatteryMode/BATTERY_LOW</TARGET-MODE-DECLARATION-REF>
+                    </DISABLED-MODE-IREF>
+                  </DISABLED-MODE-IREFS>
+                  <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/ComponentTypes/CtSaSpeedometer/CtSaSpeedometer_InternalBehavior/RCtSaSpeedometer</START-ON-EVENT-REF>
+                  <PERIOD>0.1</PERIOD>
+                </TIMING-EVENT>
+              </EVENTS>
+              <RUNNABLES>
+                <RUNNABLE-ENTITY UUID="396489F8-4A3A-4F0C-B3FA-76F200D1279C">
+                  <SHORT-NAME>RCtSaSpeedometer</SHORT-NAME>
+                  <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                  <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                  <DATA-RECEIVE-POINT-BY-ARGUMENTS>
+                    <VARIABLE-ACCESS>
+                      <SHORT-NAME>REC_PpSpeedometerIn_DeSpeedometer</SHORT-NAME>
+                      <ACCESSED-VARIABLE>
+                        <AUTOSAR-VARIABLE-IREF>
+                          <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/ComponentTypes/CtSaSpeedometer/PpSpeedometerIn</PORT-PROTOTYPE-REF>
+                          <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PiSpeedometer/DeSpeedometer</TARGET-DATA-PROTOTYPE-REF>
+                        </AUTOSAR-VARIABLE-IREF>
+                      </ACCESSED-VARIABLE>
+                    </VARIABLE-ACCESS>
+                  </DATA-RECEIVE-POINT-BY-ARGUMENTS>
+                  <DATA-SEND-POINTS>
+                    <VARIABLE-ACCESS>
+                      <SHORT-NAME>SEND_PpSpeedometerOut_DeSpeedometer</SHORT-NAME>
+                      <ACCESSED-VARIABLE>
+                        <AUTOSAR-VARIABLE-IREF>
+                          <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/ComponentTypes/CtSaSpeedometer/PpSpeedometerOut</PORT-PROTOTYPE-REF>
+                          <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/PortInterfaces/PiSpeedometer/DeSpeedometer</TARGET-DATA-PROTOTYPE-REF>
+                        </AUTOSAR-VARIABLE-IREF>
+                      </ACCESSED-VARIABLE>
+                    </VARIABLE-ACCESS>
+                  </DATA-SEND-POINTS>
+                  <MODE-ACCESS-POINTS>
+                    <MODE-ACCESS-POINT>
+                      <MODE-GROUP-IREF>
+                        <R-MODE-GROUP-IN-ATOMIC-SWC-INSTANCE-REF>
+                          <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/ComponentTypes/CtSaSpeedometer/PpBatteryMode</CONTEXT-R-PORT-REF>
+                          <TARGET-MODE-GROUP-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/PortInterfaces/PiBatteryMode/BatteryMode</TARGET-MODE-GROUP-REF>
+                        </R-MODE-GROUP-IN-ATOMIC-SWC-INSTANCE-REF>
+                      </MODE-GROUP-IREF>
+                    </MODE-ACCESS-POINT>
+                  </MODE-ACCESS-POINTS>
+                  <SYMBOL>RCtSaSpeedometer</SYMBOL>
+                </RUNNABLE-ENTITY>
+              </RUNNABLES>
+              <SUPPORTS-MULTIPLE-INSTANTIATION>false</SUPPORTS-MULTIPLE-INSTANTIATION>
+            </SWC-INTERNAL-BEHAVIOR>
+          </INTERNAL-BEHAVIORS>
+        </SENSOR-ACTUATOR-SW-COMPONENT-TYPE>
+        <SWC-IMPLEMENTATION UUID="9A710A7F-A8EC-4FB2-8685-43C9951E172F">
+          <SHORT-NAME>CtSaSpeedometer_Implementation</SHORT-NAME>
+          <CODE-DESCRIPTORS>
+            <CODE>
+              <SHORT-NAME>Default</SHORT-NAME>
+              <ARTIFACT-DESCRIPTORS>
+                <AUTOSAR-ENGINEERING-OBJECT>
+                  <SHORT-LABEL>Default</SHORT-LABEL>
+                  <CATEGORY>SWSRC</CATEGORY>
+                </AUTOSAR-ENGINEERING-OBJECT>
+              </ARTIFACT-DESCRIPTORS>
+            </CODE>
+          </CODE-DESCRIPTORS>
+          <BEHAVIOR-REF DEST="SWC-INTERNAL-BEHAVIOR">/ComponentTypes/CtSaSpeedometer/CtSaSpeedometer_InternalBehavior</BEHAVIOR-REF>
+        </SWC-IMPLEMENTATION>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>
